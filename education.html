@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติการศึกษา | Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-code logo-icon"></i>
+                <span>PORTFOLIO</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> หน้าแรก</a>
+                <a href="profile.html" class="nav-link"><i class="fa-solid fa-user"></i> ประวัติส่วนตัว</a>
+                <a href="education.html" class="nav-link active"><i class="fa-solid fa-graduation-cap"></i> การศึกษา</a>
+                <a href="hobby.html" class="nav-link"><i class="fa-solid fa-gamepad"></i> งานอดิเรก</a>
+                <a href="contact.html" class="nav-link"><i class="fa-solid fa-paper-plane"></i> ติดต่อ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h1>
+                <p class="page-subtitle">เส้นทางการเรียนรู้และสถาบันการศึกษาจากอดีตจนถึงปัจจุบัน</p>
+            </div>
+
+            <!-- Highlights -->
+            <div class="edu-highlight-grid">
+                <div class="edu-box">
+                    <i class="fa-solid fa-school icon"></i>
+                    <div>
+                        <h4>โรงเรียนปัจจุบัน</h4>
+                        <p>[กรอกชื่อโรงเรียน]</p>
+                    </div>
+                </div>
+                <div class="edu-box">
+                    <i class="fa-solid fa-chalkboard-user icon"></i>
+                    <div>
+                        <h4>ระดับชั้น</h4>
+                        <p>มัธยมศึกษาปีที่ 3/[กรอกห้อง]</p>
+                    </div>
+                </div>
+                <div class="edu-box">
+                    <i class="fa-solid fa-award icon"></i>
+                    <div>
+                        <h4>วิชาที่เชี่ยวชาญ</h4>
+                        <p>[กรอกวิชาที่ชอบ]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">ปัจจุบัน</span>
+                        <h3>มัธยมศึกษาตอนต้น (ม.1 - ม.3)</h3>
+                        <p class="school-name"><i class="fa-solid fa-building-columns"></i> โรงเรียน[กรอกชื่อโรงเรียน]</p>
+                        <p class="desc">ตั้งใจศึกษาเล่าเรียน พัฒนาทักษะด้านเทคโนโลยี สารสนเทศ และมีส่วนร่วมในกิจกรรมต่าง ๆ ของโรงเรียนอย่างสม่ำเสมอ</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">อดีต</span>
+                        <h3>ประถมศึกษา (ป.1 - ป.6)</h3>
+                        <p class="school-name"><i class="fa-solid fa-building-columns"></i> โรงเรียนระดับประถมศึกษา</p>
+                        <p class="desc">สำเร็จการศึกษาชั้นประถมศึกษาด้วยผลการเรียนที่ดี ได้รับพื้นฐานความรู้ทางคณิตศาสตร์ วิทยาศาสตร์ และภาษาไทยอย่างมั่นคง</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Table -->
+            <div class="table-card">
+                <h3 class="table-title"><i class="fa-solid fa-table-list"></i> ตารางสรุปประวัติการศึกษา</h3>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>ระดับการศึกษา</th>
+                                <th>สถานศึกษา</th>
+                                <th>ระดับชั้น</th>
+                                <th>สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>มัธยมศึกษาตอนต้น</td>
+                                <td>โรงเรียน[กรอกชื่อโรงเรียน]</td>
+                                <td>ม.3/[กรอกห้อง]</td>
+                                <td><span class="status-badge active">กำลังศึกษา</span></td>
+                            </tr>
+                            <tr>
+                                <td>ประถมศึกษา</td>
+                                <td>โรงเรียนระดับประถมศึกษา</td>
+                                <td>ป.1 - ป.6</td>
+                                <td><span class="status-badge completed">สำเร็จการศึกษา</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h3>[กรอกชื่อ-นามสกุล]</h3>
+                <p>นักเรียนชั้น ม.3/[กรอกห้อง] | โรงเรียน[กรอกชื่อโรงเรียน]</p>
+                <p class="copyright">&copy; 2026 All Rights Reserved. Computer Science Project.</p>
+            </div>
+            <div class="footer-nav">
+                <a href="index.html">หน้าแรก</a>
+                <a href="profile.html">ประวัติส่วนตัว</a>
+                <a href="education.html">การศึกษา</a>
+                <a href="hobby.html">งานอดิเรก</a>
+                <a href="contact.html">ติดต่อ</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
