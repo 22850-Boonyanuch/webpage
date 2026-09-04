@@ -1,101 +1,2761 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก | Student Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>หน้าแรก | ข้าวหอม Portfolio</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+
+            --primary: #ff4fa3;
+            --secondary: #8b5cf6;
+            --blue: #4f8cff;
+
+            --bg: #fff7fc;
+
+            --card: rgba(255,255,255,0.82);
+
+            --text: #29243a;
+
+            --muted: #777185;
+
+            --shadow:
+                0 20px 50px rgba(173,76,145,0.14);
+
+            --radius: 25px;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        body.dark {
+
+            --bg: #15121d;
+
+            --card: rgba(35,30,47,0.9);
+
+            --text: #faf5ff;
+
+            --muted: #bdb3c9;
+
+            --shadow:
+                0 20px 50px rgba(0,0,0,0.4);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family: 'Kanit', sans-serif;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(255,79,163,0.16),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(139,92,246,0.15),
+                    transparent 30%
+                ),
+
+                var(--bg);
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+            transition:
+                background 0.5s ease,
+                color 0.5s ease;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        .scroll-progress {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 0%;
+            height: 4px;
+
+            z-index: 9999;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff4fa3,
+                    #8b5cf6,
+                    #4f8cff,
+                    #ff4fa3
+                );
+
+            box-shadow:
+                0 0 15px rgba(255,79,163,0.8);
+        }
+
+
+        /* =====================================================
+           PARTICLES
+        ===================================================== */
+
+        .particles {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: -1;
+        }
+
+        .particle {
+
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            background: #ff69b4;
+
+            border-radius: 50%;
+
+            opacity: 0.5;
+
+            animation:
+                particleMove linear infinite;
+        }
+
+        @keyframes particleMove {
+
+            0% {
+
+                transform:
+                    translateY(110vh)
+                    translateX(0)
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+
+                transform:
+                    translateY(-10vh)
+                    translateX(100px)
+                    scale(1.4);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,0.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.5);
+
+            transition: 0.35s ease;
+        }
+
+        body.dark .navbar {
+
+            background:
+                rgba(21,18,29,0.78);
+        }
+
+
+        .nav-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 15px 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: var(--primary);
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+        .logo:hover {
+
+            transform:
+                scale(1.07);
+        }
+
+        .logo-icon {
+
+            font-size: 24px;
+
+            animation:
+                logoFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-5px)
+                    rotate(5deg);
+            }
+        }
+
+
+        /* NAV MENU */
+
+        .nav-menu {
+
+            display: flex;
+
+            gap: 5px;
+
+            align-items: center;
+
+            overflow-x: auto;
+        }
+
+        .nav-link {
+
+            padding:
+                9px 13px;
+
+            border-radius: 14px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-link:hover {
+
+            color: var(--primary);
+
+            background:
+                rgba(255,79,163,0.09);
+
+            transform:
+                translateY(-2px);
+        }
+
+        .nav-link.active {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(255,79,163,0.25);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero-section {
+
+            min-height:
+                calc(100vh - 75px);
+
+            display: flex;
+
+            align-items: center;
+
+            padding:
+                80px 20px;
+        }
+
+        .hero-container {
+
+            width: min(1150px, 100%);
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+
+        /* HERO TEXT */
+
+        .hero-text {
+
+            animation:
+                heroText 1s ease both;
+        }
+
+        @keyframes heroText {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-50px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+            }
+        }
+
+
+        /* BADGE */
+
+        .badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                9px 16px;
+
+            border-radius: 50px;
+
+            color: #d72d7c;
+
+            background:
+                rgba(255,79,163,0.1);
+
+            border:
+                1px solid
+                rgba(255,79,163,0.15);
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+
+            animation:
+                badgePulse 2.5s infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,100% {
+                box-shadow:
+                    0 0 0
+                    rgba(255,79,163,0);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 25px
+                    rgba(255,79,163,0.25);
+            }
+        }
+
+
+        /* TITLE */
+
+        .hero-title {
+
+            font-size:
+                clamp(35px,5vw,65px);
+
+            line-height: 1.25;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+
+        .text-gradient {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff4fa3,
+                    #8b5cf6,
+                    #4f8cff,
+                    #ff4fa3
+                );
+
+            background-size: 300%;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+            animation:
+                gradientText 5s linear infinite;
+        }
+
+        @keyframes gradientText {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+
+        /* SUBTITLE */
+
+        .hero-subtitle {
+
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 18px;
+
+            line-height: 1.9;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* TYPING */
+
+        .typing {
+
+            color: var(--primary);
+
+            font-weight: 500;
+
+            border-right:
+                2px solid var(--primary);
+
+            padding-right: 4px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .hero-cta {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            padding:
+                13px 22px;
+
+            border-radius: 15px;
+
+            font-size: 15px;
+
+            transition:
+                0.35s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .btn::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.3),
+                    transparent
+                );
+
+            transition:
+                0.5s ease;
+        }
+
+        .btn:hover::before {
+
+            left: 100%;
+        }
+
+        .btn-primary {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(255,79,163,0.25);
+        }
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-5px)
+                scale(1.03);
+
+            box-shadow:
+                0 18px 35px
+                rgba(255,79,163,0.35);
+        }
+
+        .btn-outline {
+
+            color: var(--primary);
+
+            border:
+                2px solid
+                rgba(255,79,163,0.35);
+
+            background:
+                rgba(255,255,255,0.35);
+        }
+
+        .btn-outline:hover {
+
+            color: white;
+
+            border-color:
+                transparent;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6
+                );
+
+            transform:
+                translateY(-5px);
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+        ===================================================== */
+
+        .hero-visual {
+
+            display: flex;
+
+            justify-content: center;
+
+            animation:
+                heroImage 1s ease 0.2s both;
+        }
+
+        @keyframes heroImage {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(50px)
+                    scale(0.8);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0)
+                    scale(1);
+            }
+        }
+
+
+        .avatar-wrapper {
+
+            position: relative;
+
+            width: 400px;
+
+            max-width: 90vw;
+
+            aspect-ratio: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* GLOW */
+
+        .avatar-bg-glow {
+
+            position: absolute;
+
+            width: 90%;
+
+            height: 90%;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6,
+                    #4f8cff
+                );
+
+            filter:
+                blur(35px);
+
+            opacity: 0.35;
+
+            animation:
+                glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,100% {
+                transform:
+                    scale(0.9);
+            }
+
+            50% {
+                transform:
+                    scale(1.08);
+            }
+        }
+
+
+        /* AVATAR */
+
+        .avatar-img {
+
+            position: relative;
+
+            width: 75%;
+
+            height: 75%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                8px solid white;
+
+            box-shadow:
+
+                0 0 0 8px
+                rgba(255,79,163,0.12),
+
+                0 25px 60px
+                rgba(255,79,163,0.3);
+
+            z-index: 2;
+
+            animation:
+                avatarFloat 4s ease-in-out infinite;
+
+            transition:
+                0.5s ease;
+        }
+
+        .avatar-img:hover {
+
+            transform:
+                scale(1.08)
+                rotate(3deg);
+
+            box-shadow:
+
+                0 0 0 10px
+                rgba(255,79,163,0.2),
+
+                0 30px 70px
+                rgba(255,79,163,0.4);
+        }
+
+        @keyframes avatarFloat {
+
+            0%,100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px);
+            }
+        }
+
+
+        /* =====================================================
+           FLOATING BADGES
+        ===================================================== */
+
+        .floating-badge {
+
+            position: absolute;
+
+            z-index: 5;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                11px 16px;
+
+            color: var(--text);
+
+            background:
+                rgba(255,255,255,0.86);
+
+            backdrop-filter:
+                blur(15px);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(80,50,100,0.15);
+
+            font-size: 14px;
+
+            white-space: nowrap;
+
+            animation:
+                floatingBadge 3s ease-in-out infinite;
+        }
+
+        body.dark .floating-badge {
+
+            background:
+                rgba(40,35,52,0.9);
+        }
+
+        .floating-badge i {
+
+            color: var(--primary);
+        }
+
+        .badge-1 {
+
+            left: 0;
+
+            top: 22%;
+
+            animation-delay:
+                0s;
+        }
+
+        .badge-2 {
+
+            right: 0;
+
+            bottom: 22%;
+
+            animation-delay:
+                1.2s;
+        }
+
+        @keyframes floatingBadge {
+
+            0%,100% {
+
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-10px);
+            }
+        }
+
+
+        /* =====================================================
+           HIGHLIGHTS
+        ===================================================== */
+
+        .quick-highlights {
+
+            padding:
+                30px 20px 90px;
+        }
+
+        .container {
+
+            width:
+                min(1150px,100%);
+
+            margin:
+                auto;
+        }
+
+
+        .highlight-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 25px;
+        }
+
+
+        .highlight-card {
+
+            position: relative;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.7);
+
+            border-radius:
+                var(--radius);
+
+            box-shadow:
+                var(--shadow);
+
+            backdrop-filter:
+                blur(20px);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            transform-style:
+                preserve-3d;
+        }
+
+        .highlight-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 120px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,79,163,0.08);
+
+            right: -50px;
+            top: -50px;
+
+            transition:
+                0.5s ease;
+        }
+
+        .highlight-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            box-shadow:
+                0 30px 65px
+                rgba(255,79,163,0.18);
+        }
+
+        .highlight-card:hover::before {
+
+            transform:
+                scale(2.2);
+        }
+
+
+        .card-icon {
+
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                0 auto 17px;
+
+            border-radius: 20px;
+
+            color: white;
+
+            font-size: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(255,79,163,0.25);
+
+            transition:
+                0.4s ease;
+        }
+
+        .highlight-card:hover .card-icon {
+
+            transform:
+                rotate(10deg)
+                scale(1.1);
+        }
+
+
+        .highlight-card h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .highlight-card p {
+
+            color:
+                var(--muted);
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           REVEAL
+        ===================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            padding:
+                45px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #24182e,
+                    #15121d
+                );
+
+            color: white;
+        }
+
+        .footer-container {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 30px;
+        }
+
+        .footer-info h3 {
+
+            color:
+                #ff75b7;
+
+            margin-bottom:
+                8px;
+        }
+
+        .footer-info p {
+
+            color:
+                #bdb3c9;
+
+            margin:
+                5px 0;
+        }
+
+        .copyright {
+
+            font-size:
+                13px;
+        }
+
+        .footer-nav {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            align-content:
+                flex-start;
+        }
+
+        .footer-nav a {
+
+            color:
+                #cfc6d9;
+
+            transition:
+                0.3s ease;
+        }
+
+        .footer-nav a:hover {
+
+            color:
+                #ff75b7;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           DARK MODE BUTTON
+        ===================================================== */
+
+        .theme-button {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 85px;
+
+            width: 48px;
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4fa3,
+                    #8b5cf6
+                );
+
+            cursor: pointer;
+
+            z-index: 2000;
+
+            font-size: 18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(255,79,163,0.35);
+
+            transition:
+                0.3s ease;
+        }
+
+        .theme-button:hover {
+
+            transform:
+                rotate(20deg)
+                scale(1.1);
+        }
+
+
+        /* =====================================================
+           BACK TOP
+        ===================================================== */
+
+        .back-top {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 25px;
+
+            width: 48px;
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #4f8cff
+                );
+
+            cursor: pointer;
+
+            z-index: 2000;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(20px);
+
+            transition:
+                0.35s ease;
+        }
+
+        .back-top.show {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+        .back-top:hover {
+
+            transform:
+                translateY(-5px);
+        }
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        .toast {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform:
+                translate(-50%,100px);
+
+            padding:
+                12px 22px;
+
+            color: white;
+
+            background:
+                rgba(30,25,40,0.94);
+
+            border-radius:
+                50px;
+
+            opacity: 0;
+
+            transition:
+                0.4s ease;
+
+            z-index: 5000;
+        }
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translate(-50%,0);
+        }
+
+
+        /* =====================================================
+           HEART EFFECT
+        ===================================================== */
+
+        .click-heart {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            color:
+                #ff4fa3;
+
+            font-size:
+                20px;
+
+            z-index:
+                99999;
+
+            animation:
+                heartFly 1s ease forwards;
+        }
+
+        @keyframes heartFly {
+
+            0% {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(0.7);
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-100px)
+                    translateX(var(--x))
+                    scale(1.5);
+            }
+        }
+
+
+        /* =====================================================
+           RIPPLE
+        ===================================================== */
+
+        .ripple {
+
+            position: fixed;
+
+            pointer-events: none;
+
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,79,163,0.3);
+
+            transform:
+                translate(-50%,-50%)
+                scale(0);
+
+            animation:
+                rippleAnimation 0.7s ease-out;
+
+            z-index:
+                99998;
+        }
+
+        @keyframes rippleAnimation {
+
+            to {
+
+                transform:
+                    translate(-50%,-50%)
+                    scale(15);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-container {
+
+                flex-direction:
+                    column;
+
+                padding:
+                    13px;
+            }
+
+            .nav-menu {
+
+                width:
+                    100%;
+
+                justify-content:
+                    center;
+            }
+
+            .hero-container {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align:
+                    center;
+            }
+
+            .hero-text {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    center;
+            }
+
+            .hero-subtitle {
+
+                max-width:
+                    600px;
+            }
+
+            .hero-visual {
+
+                order:
+                    -1;
+            }
+
+            .avatar-wrapper {
+
+                width:
+                    350px;
+            }
+
+            .highlight-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .footer-container {
+
+                flex-direction:
+                    column;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero-section {
+
+                padding:
+                    50px 18px;
+            }
+
+            .hero-title {
+
+                font-size:
+                    34px;
+            }
+
+            .hero-subtitle {
+
+                font-size:
+                    15px;
+            }
+
+            .avatar-wrapper {
+
+                width:
+                    290px;
+            }
+
+            .floating-badge {
+
+                font-size:
+                    11px;
+
+                padding:
+                    8px 10px;
+            }
+
+            .badge-1 {
+
+                left:
+                    -5px;
+            }
+
+            .badge-2 {
+
+                right:
+                    -5px;
+            }
+
+            .nav-link {
+
+                font-size:
+                    12px;
+
+                padding:
+                    8px 9px;
+            }
+
+            .nav-link i {
+
+                display:
+                    none;
+            }
+
+            .theme-button {
+
+                right:
+                    15px;
+
+                bottom:
+                    80px;
+            }
+
+            .back-top {
+
+                right:
+                    15px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                scroll-behavior:
+                    auto !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+        }
+
+    </style>
 </head>
+
+
 <body>
 
-    <!-- Navigation Bar -->
+
+    <!-- =====================================================
+         SCROLL PROGRESS
+    ===================================================== -->
+
+    <div
+        class="scroll-progress"
+        id="scrollProgress">
+    </div>
+
+
+    <!-- =====================================================
+         PARTICLES
+    ===================================================== -->
+
+    <div
+        class="particles"
+        id="particles">
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
     <header class="navbar">
+
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-code logo-icon"></i>
-                <span>PORTFOLIO</span>
+
+            <a
+                href="index.html"
+                class="logo">
+
+                <i
+                    class="fa-solid fa-code logo-icon">
+                </i>
+
+                <span>
+                    PORTFOLIO
+                </span>
+
             </a>
+
+
             <nav class="nav-menu">
-                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> หน้าแรก</a>
-                <a href="profile.html" class="nav-link"><i class="fa-solid fa-user"></i> ประวัติส่วนตัว</a>
-                <a href="education.html" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> การศึกษา</a>
-                <a href="hobby.html" class="nav-link"><i class="fa-solid fa-gamepad"></i> งานอดิเรก</a>
-                <a href="contact.html" class="nav-link"><i class="fa-solid fa-paper-plane"></i> ติดต่อ</a>
+
+                <a
+                    href="index.html"
+                    class="nav-link active">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    หน้าแรก
+
+                </a>
+
+
+                <a
+                    href="profile.html"
+                    class="nav-link">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    ประวัติส่วนตัว
+
+                </a>
+
+
+                <a
+                    href="education.html"
+                    class="nav-link">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    การศึกษา
+
+                </a>
+
+
+                <a
+                    href="hobby.html"
+                    class="nav-link">
+
+                    <i class="fa-solid fa-gamepad"></i>
+
+                    งานอดิเรก
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="nav-link">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    ติดต่อ
+
+                </a>
+
             </nav>
+
         </div>
+
     </header>
 
-    <!-- Main Content -->
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
     <main>
+
+
         <section class="hero-section">
+
             <div class="hero-container">
+
+
+                <!-- HERO TEXT -->
+
                 <div class="hero-text">
-                    <span class="badge"><i class="fa-solid fa-sparkles"></i> ยินดีต้อนรับสู่พอร์ตโฟลิโอของฉัน</span>
-                    <h1 class="hero-title">สวัสดีค่ะ! หนูชื่อ <span class="text-gradient">[เด็กหญิงบุณยานุช ปาปัน]</span></h1>
-                    <p class="hero-subtitle">นักเรียนชั้นมัธยมศึกษาปีที่ 3 ที่มีความสนใจในด้านเทคโนโลยี วิทยาศาสตร์ และการเรียนรู้สิ่งใหม่ ๆ เพื่อพัฒนาตนเองอย่างไม่หยุดยั้ง</p>
+
+
+                    <span class="badge">
+
+                        <i
+                            class="fa-solid fa-sparkles">
+                        </i>
+
+                        ยินดีต้อนรับสู่พอร์ตโฟลิโอของฉัน 💗
+
+                    </span>
+
+
+                    <h1 class="hero-title">
+
+                        สวัสดีค่ะ!
+
+                        <br>
+
+                        หนูชื่อ
+
+                        <span class="text-gradient">
+
+                            เด็กหญิงบุณยานุช ปาปัน
+
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-subtitle">
+
+                        นักเรียนชั้นมัธยมศึกษาปีที่ 3
+                        ที่มีความสนใจใน
+
+                        <span
+                            class="typing"
+                            id="typingText">
+                        </span>
+
+                        เพื่อพัฒนาตนเองอย่างไม่หยุดยั้ง ✨
+
+                    </p>
+
+
                     <div class="hero-cta">
-                        <a href="profile.html" class="btn btn-primary"><i class="fa-solid fa-circle-user"></i> รู้จักฉันมากขึ้น</a>
-                        <a href="hobby.html" class="btn btn-outline"><i class="fa-solid fa-heart"></i> ดูงานอดิเรกของฉัน</a>
+
+
+                        <a
+                            href="profile.html"
+                            class="btn btn-primary">
+
+                            <i
+                                class="fa-solid fa-circle-user">
+                            </i>
+
+                            รู้จักฉันมากขึ้น
+
+                        </a>
+
+
+                        <a
+                            href="hobby.html"
+                            class="btn btn-outline">
+
+                            <i
+                                class="fa-solid fa-heart">
+                            </i>
+
+                            ดูงานอดิเรกของฉัน
+
+                        </a>
+
                     </div>
+
                 </div>
+
+
+
+                <!-- HERO IMAGE -->
+
                 <div class="hero-visual">
+
+
                     <div class="avatar-wrapper">
-                        <div class="avatar-bg-glow"></div>
-                        <img src="https://placehold.co/400x400/1976D2/FFFFFF/png?text=Profile+Image" alt="รูปโปรไฟล์ของฉัน" class="avatar-img">
-                        <div class="floating-badge badge-1">
-                            <i class="fa-solid fa-laptop-code"></i> <span>M.3 Student</span>
+
+
+                        <div
+                            class="avatar-bg-glow">
                         </div>
-                        <div class="floating-badge badge-2">
-                            <i class="fa-solid fa-star"></i> <span>Tech Enthusiast</span>
+
+
+                        <!-- รูปของคุณ -->
+
+                        <img
+                            src="profile.jpg"
+                            alt="รูปโปรไฟล์ของบุณยานุช"
+                            class="avatar-img"
+                        >
+
+
+                        <!-- FLOATING BADGE -->
+
+                        <div
+                            class="floating-badge badge-1">
+
+                            <i
+                                class="fa-solid fa-laptop-code">
+                            </i>
+
+                            <span>
+                                M.3 Student
+                            </span>
+
                         </div>
+
+
+                        <div
+                            class="floating-badge badge-2">
+
+                            <i
+                                class="fa-solid fa-star">
+                            </i>
+
+                            <span>
+                                Tech Enthusiast
+                            </span>
+
+                        </div>
+
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- Highlights Section -->
+
+
+        <!-- =====================================================
+             HIGHLIGHTS
+        ===================================================== -->
+
         <section class="quick-highlights">
+
             <div class="container">
+
                 <div class="highlight-grid">
-                    <div class="highlight-card">
-                        <div class="card-icon"><i class="fa-solid fa-school"></i></div>
-                        <h3>ระดับชั้น</h3>
-                        <p>มัธยมศึกษาปีที่ 3/[2]</p>
+
+
+                    <!-- CARD 1 -->
+
+                    <div
+                        class="highlight-card reveal tilt-card">
+
+                        <div class="card-icon">
+
+                            <i
+                                class="fa-solid fa-school">
+                            </i>
+
+                        </div>
+
+                        <h3>
+                            ระดับชั้น
+                        </h3>
+
+                        <p>
+                            มัธยมศึกษาปีที่ 3/2
+                        </p>
+
                     </div>
-                    <div class="highlight-card">
-                        <div class="card-icon"><i class="fa-solid fa-book-bookmark"></i></div>
-                        <h3>วิชาที่ชอบ</h3>
-                        <p>[คณิตศาสตร์]</p>
+
+
+
+                    <!-- CARD 2 -->
+
+                    <div
+                        class="highlight-card reveal tilt-card">
+
+                        <div class="card-icon">
+
+                            <i
+                                class="fa-solid fa-book-bookmark">
+                            </i>
+
+                        </div>
+
+                        <h3>
+                            วิชาที่ชอบ
+                        </h3>
+
+                        <p>
+                            คณิตศาสตร์
+                        </p>
+
                     </div>
-                    <div class="highlight-card">
-                        <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                        <h3>ความสนใจ</h3>
-                        <p>[สนใจในการประดิษฐ์ของเล่น]</p>
+
+
+
+                    <!-- CARD 3 -->
+
+                    <div
+                        class="highlight-card reveal tilt-card">
+
+                        <div class="card-icon">
+
+                            <i
+                                class="fa-solid fa-lightbulb">
+                            </i>
+
+                        </div>
+
+                        <h3>
+                            ความสนใจ
+                        </h3>
+
+                        <p>
+                            สนใจในการประดิษฐ์ของเล่น
+                        </p>
+
                     </div>
+
+
                 </div>
+
             </div>
+
         </section>
+
+
     </main>
 
-    <!-- Footer -->
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
     <footer class="footer">
+
         <div class="container footer-container">
+
+
             <div class="footer-info">
-                <h3>[เด็กหญิงบุณยานุช ปาปัน]</h3>
-                <p>นักเรียนชั้น ม.3/[2] | โรงเรียน[จอมทอง]</p>
-                <p class="copyright">&copy; 2026 All Rights Reserved. Computer Science Project.</p>
+
+                <h3>
+                    เด็กหญิงบุณยานุช ปาปัน
+                </h3>
+
+                <p>
+                    นักเรียนชั้น ม.3/2 |
+                    โรงเรียนจอมทอง
+                </p>
+
+                <p class="copyright">
+
+                    &copy; 2026 All Rights Reserved.
+
+                    Computer Science Project.
+
+                </p>
+
             </div>
+
+
             <div class="footer-nav">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
+
+                <a href="index.html">
+                    หน้าแรก
+                </a>
+
+                <a href="profile.html">
+                    ประวัติส่วนตัว
+                </a>
+
+                <a href="education.html">
+                    การศึกษา
+                </a>
+
+                <a href="hobby.html">
+                    งานอดิเรก
+                </a>
+
+                <a href="contact.html">
+                    ติดต่อ
+                </a>
+
             </div>
+
+
         </div>
+
     </footer>
 
+
+
+    <!-- =====================================================
+         DARK MODE
+    ===================================================== -->
+
+    <button
+        class="theme-button"
+        id="themeButton"
+        aria-label="เปลี่ยนธีม">
+
+        <i
+            class="fa-solid fa-moon">
+        </i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         BACK TO TOP
+    ===================================================== -->
+
+    <button
+        class="back-top"
+        id="backTop"
+        aria-label="กลับขึ้นด้านบน">
+
+        <i
+            class="fa-solid fa-arrow-up">
+        </i>
+
+    </button>
+
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast">
+
+        ยินดีต้อนรับเข้าสู่ Portfolio 💗
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           PARTICLES
+        ===================================================== */
+
+        const particleContainer =
+            document.getElementById(
+                "particles"
+            );
+
+
+        for (
+            let i = 0;
+            i < 40;
+            i++
+        ) {
+
+            const particle =
+                document.createElement(
+                    "span"
+                );
+
+
+            particle.className =
+                "particle";
+
+
+            particle.style.left =
+                Math.random() * 100 + "%";
+
+
+            particle.style.animationDuration =
+                (8 + Math.random() * 15) + "s";
+
+
+            particle.style.animationDelay =
+                Math.random() * 10 + "s";
+
+
+            const size =
+                3 + Math.random() * 5;
+
+
+            particle.style.width =
+                size + "px";
+
+
+            particle.style.height =
+                size + "px";
+
+
+            particleContainer.appendChild(
+                particle
+            );
+
+        }
+
+
+
+        /* =====================================================
+           TYPING EFFECT
+        ===================================================== */
+
+        const typingText =
+            document.getElementById(
+                "typingText"
+            );
+
+
+        const words = [
+
+            "เทคโนโลยี 💻",
+
+            "วิทยาศาสตร์ 🔬",
+
+            "คณิตศาสตร์ 📐",
+
+            "การเรียนรู้สิ่งใหม่ ๆ ✨",
+
+            "การประดิษฐ์ของเล่น 🧸"
+
+        ];
+
+
+        let wordIndex = 0;
+
+        let charIndex = 0;
+
+        let deleting = false;
+
+
+        function typeEffect() {
+
+
+            const currentWord =
+                words[wordIndex];
+
+
+            if (!deleting) {
+
+
+                typingText.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
+
+
+                charIndex++;
+
+
+                if (
+                    charIndex ===
+                    currentWord.length
+                ) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typeEffect,
+                        1200
+                    );
+
+                    return;
+                }
+
+
+            } else {
+
+
+                typingText.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
+
+
+                charIndex--;
+
+
+                if (
+                    charIndex === 0
+                ) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (wordIndex + 1)
+                        % words.length;
+
+                }
+
+            }
+
+
+            setTimeout(
+                typeEffect,
+                deleting
+                    ? 45
+                    : 75
+            );
+
+        }
+
+
+        typeEffect();
+
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add("show");
+
+
+                                revealObserver
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.15
+                }
+
+            );
+
+
+        revealElements.forEach(
+            element => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        const scrollProgress =
+            document.getElementById(
+                "scrollProgress"
+            );
+
+
+        const backTop =
+            document.getElementById(
+                "backTop"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+
+                const scrollTop =
+                    window.scrollY;
+
+
+                const documentHeight =
+                    document.documentElement
+                        .scrollHeight -
+                    window.innerHeight;
+
+
+                const percentage =
+                    documentHeight > 0
+                    ? (
+                        scrollTop /
+                        documentHeight
+                    ) * 100
+                    : 0;
+
+
+                scrollProgress.style.width =
+                    percentage + "%";
+
+
+                if (
+                    scrollTop > 400
+                ) {
+
+                    backTop.classList
+                        .add("show");
+
+                } else {
+
+                    backTop.classList
+                        .remove("show");
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           BACK TOP
+        ===================================================== */
+
+        backTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        const themeButton =
+            document.getElementById(
+                "themeButton"
+            );
+
+
+        const toast =
+            document.getElementById(
+                "toast"
+            );
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "portfolio-theme"
+            );
+
+
+        if (
+            savedTheme === "dark"
+        ) {
+
+            document.body
+                .classList
+                .add("dark");
+
+
+            themeButton.innerHTML =
+                '<i class="fa-solid fa-sun"></i>';
+
+        }
+
+
+        themeButton.addEventListener(
+            "click",
+            () => {
+
+
+                document.body
+                    .classList
+                    .toggle("dark");
+
+
+                const isDark =
+                    document.body
+                        .classList
+                        .contains("dark");
+
+
+                localStorage.setItem(
+                    "portfolio-theme",
+                    isDark
+                        ? "dark"
+                        : "light"
+                );
+
+
+                themeButton.innerHTML =
+                    isDark
+
+                    ? '<i class="fa-solid fa-sun"></i>'
+
+                    : '<i class="fa-solid fa-moon"></i>';
+
+
+                toast.textContent =
+                    isDark
+
+                    ? "เปิดโหมดกลางคืนแล้ว 🌙"
+
+                    : "เปิดโหมดสว่างแล้ว ☀️";
+
+
+                toast.classList
+                    .add("show");
+
+
+                setTimeout(
+                    () => {
+
+                        toast.classList
+                            .remove("show");
+
+                    },
+                    1800
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           3D TILT
+        ===================================================== */
+
+        const tiltCards =
+            document.querySelectorAll(
+                ".tilt-card"
+            );
+
+
+        tiltCards.forEach(
+            card => {
+
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+
+                        if (
+                            window.innerWidth
+                            < 900
+                        ) return;
+
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+
+                        const centerX =
+                            rect.width / 2;
+
+
+                        const centerY =
+                            rect.height / 2;
+
+
+                        const rotateX =
+                            (
+                                (y - centerY) /
+                                centerY
+                            ) * -4;
+
+
+                        const rotateY =
+                            (
+                                (x - centerX) /
+                                centerX
+                            ) * 4;
+
+
+                        card.style.transform =
+                            `perspective(1000px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             translateY(-8px)`;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CLICK HEART
+        ===================================================== */
+
+        document.addEventListener(
+            "click",
+            event => {
+
+
+                if (
+                    event.target.closest(
+                        "button"
+                    )
+                ) return;
+
+
+                const heart =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                heart.className =
+                    "click-heart";
+
+
+                heart.innerHTML =
+                    Math.random() > 0.5
+                    ? "♥"
+                    : "♡";
+
+
+                heart.style.left =
+                    event.clientX + "px";
+
+
+                heart.style.top =
+                    event.clientY + "px";
+
+
+                heart.style.setProperty(
+                    "--x",
+                    (
+                        Math.random() * 80 -
+                        40
+                    ) + "px"
+                );
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        heart.remove();
+
+                    },
+                    1000
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RIPPLE
+        ===================================================== */
+
+        document.addEventListener(
+            "click",
+            event => {
+
+
+                const ripple =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ripple.className =
+                    "ripple";
+
+
+                ripple.style.left =
+                    event.clientX + "px";
+
+
+                ripple.style.top =
+                    event.clientY + "px";
+
+
+                document.body.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        ripple.remove();
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           WELCOME TOAST
+        ===================================================== */
+
+        window.addEventListener(
+            "load",
+            () => {
+
+
+                setTimeout(
+                    () => {
+
+
+                        toast.textContent =
+                            "ยินดีต้อนรับเข้าสู่ Portfolio ของข้าวหอม 💗";
+
+
+                        toast.classList
+                            .add("show");
+
+
+                        setTimeout(
+                            () => {
+
+                                toast.classList
+                                    .remove("show");
+
+                            },
+                            2500
+                        );
+
+
+                    },
+                    700
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
+
 </html>
