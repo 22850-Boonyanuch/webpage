@@ -1,15 +1,28 @@
 /* =========================================================
-   EXTRA INTERACTIVE EFFECTS
+   EXTRA INTERACTIVE EFFECTS & SOFT PINK THEME
 ========================================================= */
 
 :root {
+    /* โทนสีชมพูอ่อนและสีสำหรับธีม */
+    --bg-pink-light: #fff0f5;
     --accent: #ff4081;
-    --accent2: #1976d2;
-    --glass-border: rgba(255,255,255,.22);
+    --accent2: #e91e63;
+    --pink-soft: #ffb6c1;
+    --pink-glow: #ff69b4;
+    --blue: #00c6ff;
+    --purple: #9c27b0;
+    --glass-border: rgba(255, 182, 193, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.75);
 }
 
-/* animated background */
+/* ตั้งค่าพื้นหลังสีชมพูอ่อนแบบนุ่มนวล */
+body {
+    background-color: var(--bg-pink-light);
+    color: #4a3e43;
+    overflow-x: hidden;
+}
 
+/* Animated background - ปรับเป็นโทนสีชมพูหมุนวนหวานๆ */
 body::before {
     content: "";
     position: fixed;
@@ -17,20 +30,17 @@ body::before {
     z-index: -3;
     pointer-events: none;
 
-    background:
-        conic-gradient(
-            from 0deg,
-            rgba(25,118,210,.08),
-            rgba(156,39,176,.08),
-            rgba(255,64,129,.08),
-            rgba(0,198,255,.08),
-            rgba(25,118,210,.08)
-        );
+    background: conic-gradient(
+        from 0deg,
+        rgba(255, 182, 193, 0.25),
+        rgba(255, 105, 180, 0.2),
+        rgba(233, 30, 99, 0.15),
+        rgba(255, 218, 224, 0.3),
+        rgba(255, 182, 193, 0.25)
+    );
 
     filter: blur(80px);
-
-    animation:
-        backgroundRotate 20s linear infinite;
+    animation: backgroundRotate 20s linear infinite;
 }
 
 @keyframes backgroundRotate {
@@ -41,7 +51,7 @@ body::before {
 
 
 /* =========================================================
-   GLASS NAVBAR
+   GLASS NAVBAR (สไตล์กระจกใสบนโทนชมพู)
 ========================================================= */
 
 .navbar {
@@ -50,28 +60,21 @@ body::before {
     z-index: 5000;
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    background:
-        rgba(255,255,255,.72);
+    background: rgba(255, 240, 245, 0.75);
+    border-bottom: 1px solid rgba(255, 105, 180, 0.15);
 
-    border-bottom:
-        1px solid rgba(25,118,210,.08);
-
-    transition:
-        .4s ease;
+    transition: all .4s ease;
 }
 
 body.dark-mode .navbar {
-    background:
-        rgba(9,12,20,.75);
-
-    border-color:
-        rgba(255,255,255,.08);
+    background: rgba(30, 15, 25, 0.85);
+    border-color: rgba(255, 105, 180, 0.15);
 }
 
 .navbar.scrolled {
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.12);
+    box-shadow: 0 12px 35px rgba(233, 30, 99, 0.12);
 }
 
 
@@ -81,41 +84,32 @@ body.dark-mode .navbar {
 
 .nav-link {
     position: relative;
-    transition:
-        transform .3s ease,
-        color .3s ease;
+    transition: transform .3s ease, color .3s ease;
 }
 
 .nav-link::after {
     content: "";
-
     position: absolute;
-
     left: 50%;
     bottom: -8px;
 
     width: 0;
     height: 3px;
-
     border-radius: 20px;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--pink)
-        );
+    background: linear-gradient(
+        90deg,
+        var(--accent2),
+        var(--pink-glow)
+    );
 
-    transform:
-        translateX(-50%);
-
-    transition:
-        width .35s ease;
+    transform: translateX(-50%);
+    transition: width .35s ease;
 }
 
 .nav-link:hover {
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
+    color: var(--accent2);
 }
 
 .nav-link:hover::after,
@@ -129,18 +123,16 @@ body.dark-mode .navbar {
 ========================================================= */
 
 .magnetic {
-    transition:
-        transform .2s cubic-bezier(.2,.8,.2,1);
+    transition: transform .2s cubic-bezier(.2,.8,.2,1);
 }
 
 
 /* =========================================================
-   FLOATING CONTROLS
+   FLOATING CONTROLS & BUTTONS
 ========================================================= */
 
 .floating-controls {
     position: fixed;
-
     left: 22px;
     bottom: 22px;
 
@@ -157,79 +149,57 @@ body.dark-mode .navbar {
 
     border: none;
     border-radius: 50%;
-
     color: white;
-
     cursor: pointer;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--purple)
-        );
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--pink-glow)
+    );
 
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.18);
-
-    transition:
-        .3s ease;
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+    transition: .3s ease;
 }
 
 .float-btn:hover {
-    transform:
-        translateY(-5px)
-        rotate(8deg)
-        scale(1.08);
+    transform: translateY(-5px) rotate(8deg) scale(1.08);
+    box-shadow: 0 15px 30px rgba(233, 30, 99, 0.45);
 }
 
 
 /* =========================================================
-   COLOR PICKER
+   COLOR PICKER PANEL
 ========================================================= */
 
 .color-panel {
     position: fixed;
-
     right: 85px;
     bottom: 85px;
 
     z-index: 9999;
-
     padding: 12px;
 
     display: flex;
     gap: 8px;
 
     border-radius: 20px;
+    background: rgba(255, 255, 255, 0.88);
 
-    background:
-        rgba(255,255,255,.88);
-
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.18);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.18);
 
     opacity: 0;
     visibility: hidden;
 
-    transform:
-        scale(.8)
-        translateY(20px);
-
-    transition:
-        .3s ease;
+    transform: scale(.8) translateY(20px);
+    transition: .3s ease;
 }
 
 .color-panel.show {
     opacity: 1;
     visibility: visible;
-
-    transform:
-        scale(1)
-        translateY(0);
+    transform: scale(1) translateY(0);
 }
 
 .color-dot {
@@ -237,21 +207,15 @@ body.dark-mode .navbar {
     height: 27px;
 
     border: 2px solid white;
-
     border-radius: 50%;
-
     cursor: pointer;
 
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.15);
-
-    transition:
-        .25s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    transition: .25s ease;
 }
 
 .color-dot:hover {
-    transform:
-        scale(1.25);
+    transform: scale(1.25);
 }
 
 
@@ -261,31 +225,22 @@ body.dark-mode .navbar {
 
 .visit-time {
     position: fixed;
-
     top: 20px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
-
+    transform: translateX(-50%);
     z-index: 6000;
 
-    padding:
-        7px 15px;
-
+    padding: 7px 15px;
     border-radius: 50px;
 
     font-size: 12px;
-
     color: white;
 
-    background:
-        rgba(0,0,0,.45);
+    background: rgba(233, 30, 99, 0.6);
+    backdrop-filter: blur(10px);
 
-    backdrop-filter:
-        blur(10px);
-
-    opacity: .8;
+    opacity: .9;
 }
 
 
@@ -295,56 +250,42 @@ body.dark-mode .navbar {
 
 .copyable {
     cursor: pointer;
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
+    transition: color .25s ease, transform .25s ease;
 }
 
 .copyable:hover {
-    color:
-        var(--pink);
-
-    transform:
-        translateY(-2px);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   CARD GLOW
+   CARD GLOW & 3D TILT
 ========================================================= */
 
 .hobby-card {
     --rotate-x: 0deg;
     --rotate-y: 0deg;
 
-    transform-style:
-        preserve-3d;
+    transform-style: preserve-3d;
+    transition: border-color .3s ease, box-shadow .3s ease;
 }
 
 .hobby-card > * {
-    transform:
-        translateZ(20px);
+    transform: translateZ(20px);
 }
 
 .hobby-icon-wrapper {
-    transform:
-        translateZ(35px);
+    transform: translateZ(35px);
 }
 
-
-/* =========================================================
-   CARD BORDER GLOW
-========================================================= */
-
 .hobby-card:hover {
-    border-color:
-        rgba(255,64,129,.25);
+    border-color: rgba(255, 64, 129, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
 }
 
 .hobby-card:hover .card-number {
-    text-shadow:
-        0 0 15px rgba(255,64,129,.5);
+    text-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
 }
 
 
@@ -354,27 +295,20 @@ body.dark-mode .navbar {
 
 .modal-box::before {
     content: "";
-
     position: absolute;
-
     inset: -2px;
-
     z-index: -1;
 
     border-radius: 30px;
+    background: linear-gradient(
+        135deg,
+        var(--pink-soft),
+        var(--accent),
+        var(--purple)
+    );
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--purple),
-            var(--pink)
-        );
-
-    opacity: .25;
-
-    filter:
-        blur(10px);
+    opacity: .35;
+    filter: blur(12px);
 }
 
 .modal-box {
@@ -382,22 +316,16 @@ body.dark-mode .navbar {
 }
 
 .modal-box h2 {
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--purple),
-            var(--pink)
-        );
+    background: linear-gradient(
+        90deg,
+        var(--accent2),
+        var(--pink-glow),
+        var(--purple)
+    );
 
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color:
-        transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 
@@ -406,13 +334,12 @@ body.dark-mode .navbar {
 ========================================================= */
 
 body.loading {
-    cursor:
-        wait;
+    cursor: wait;
 }
 
 
 /* =========================================================
-   FULLSCREEN
+   FULLSCREEN MODE
 ========================================================= */
 
 .fullscreen-active .page-main {
@@ -425,22 +352,15 @@ body.loading {
 ========================================================= */
 
 .back-to-top.show {
-    animation:
-        topBounce 2s infinite;
+    animation: topBounce 2s infinite;
 }
 
 @keyframes topBounce {
-
-    0%,100% {
-        box-shadow:
-            0 10px 30px
-            rgba(255,64,129,.35);
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(255, 64, 129, .35);
     }
-
     50% {
-        box-shadow:
-            0 10px 45px
-            rgba(255,64,129,.65);
+        box-shadow: 0 10px 45px rgba(255, 64, 129, .75);
     }
 }
 
@@ -451,27 +371,23 @@ body.loading {
 
 .mobile-menu-btn {
     display: none;
-
     width: 45px;
     height: 45px;
 
     border: none;
     border-radius: 12px;
-
     color: white;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--purple)
-        );
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--pink-glow)
+    );
 
     cursor: pointer;
 }
 
 @media (max-width: 768px) {
-
     .mobile-menu-btn {
         display: block;
     }
@@ -482,48 +398,35 @@ body.loading {
 
     .nav-menu {
         position: absolute;
-
         top: calc(100% + 10px);
         left: 15px;
         right: 15px;
 
         padding: 15px;
-
         display: flex;
         flex-direction: column;
 
         border-radius: 20px;
+        background: rgba(255, 240, 245, 0.95);
 
-        background:
-            rgba(255,255,255,.95);
-
-        backdrop-filter:
-            blur(20px);
-
-        box-shadow:
-            0 20px 50px rgba(0,0,0,.15);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
 
         opacity: 0;
         visibility: hidden;
 
-        transform:
-            translateY(-15px);
-
-        transition:
-            .3s ease;
+        transform: translateY(-15px);
+        transition: .3s ease;
     }
 
     .nav-menu.mobile-open {
         opacity: 1;
         visibility: visible;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 
     body.dark-mode .nav-menu {
-        background:
-            rgba(20,25,38,.97);
+        background: rgba(30, 15, 25, 0.97);
     }
 
     .visit-time {
@@ -543,48 +446,80 @@ body.loading {
 
 
 /* =========================================================
-   PARTICLE INTERACTION
+   PARTICLE INTERACTION & SELECTION
 ========================================================= */
 
 .particle.interactive {
-    transition:
-        transform .2s ease;
+    transition: transform .2s ease;
 }
-
-
-/* =========================================================
-   SELECTION
-========================================================= */
 
 ::selection {
     color: white;
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--pink-glow)
+    );
+}
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--pink)
-        );
+/* Custom Scrollbar โทนชมพู (ลูกเล่นเพิ่ม) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-pink-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink-soft);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 
 
 /* =========================================================
-   SMOOTH IMAGE
+   SMOOTH IMAGE & HOVER GLOW
 ========================================================= */
 
 img {
-    transition:
-        transform .5s ease,
-        filter .5s ease;
+    transition: transform .5s ease, filter .5s ease, box-shadow .5s ease;
 }
 
 img:hover {
-    transform:
-        scale(1.03);
+    transform: scale(1.04);
+    filter: saturate(1.2) contrast(1.05);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+}
 
-    filter:
-        saturate(1.15)
-        contrast(1.05);
+
+/* =========================================================
+   NEW EXTRA FEATURE: PULSE GLOW BUTTONS
+========================================================= */
+
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform .5s ease;
+}
+
+.btn-glow:hover::before {
+    transform: scale(1);
 }
 
 
@@ -593,10 +528,8 @@ img:hover {
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     body::before,
     .back-to-top.show {
         animation: none !important;
     }
 }
-
