@@ -1,238 +1,63 @@
-<p class="hero-subtitle">
-                        ยินดีต้อนรับเข้าสู่พื้นที่รวบรวมผลงาน การศึกษา และเรื่องราวเกี่ยวกับฉัน 
-                        กำลังเรียนรู้และพัฒนาทักษะ <span class="typing" id="typingText"></span>
-                    </p>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pink Theme Experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-                    <div class="hero-cta">
-                        <a href="profile.html" class="btn btn-primary">
-                            <i class="fa-solid fa-user"></i>
-                            รู้จักฉันให้มากขึ้น
-                        </a>
-                        <a href="contact.html" class="btn btn-outline">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            ติดต่อฉัน
-                        </a>
-                    </div>
+    <!-- Visitor Timer -->
+    <div class="visit-time" id="visitTime">เวลาบนหน้าเว็บ: 00:00</div>
 
-                </div>
+    <!-- Glass Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">SoftPink UI</div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#" class="nav-link active">หน้าแรก</a></li>
+            <li><a href="#" class="nav-link">ฟีเจอร์</a></li>
+            <li><a href="#" class="nav-link">ผลงาน</a></li>
+            <li><a href="#" class="nav-link">ติดต่อ</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </nav>
 
-                <!-- HERO VISUAL -->
-                <div class="hero-visual">
-                    <div class="avatar-wrapper">
-                        <div class="avatar-bg-glow"></div>
-                        <img src="https://via.placeholder.com/400" alt="บุณยานุช ปาปัน" class="avatar-img">
-                        
-                        <div class="floating-badge badge-1">
-                            <i class="fa-solid fa-heart"></i>
-                            <span>KaoHom Portfolio</span>
-                        </div>
-                        
-                        <div class="floating-badge badge-2">
-                            <i class="fa-solid fa-star"></i>
-                            <span>Student & Learner</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Content Container -->
+    <main class="container">
+        <h1 style="margin-bottom: 20px;" class="copyable" title="คลิกเพื่อคัดลอก">ลองคลิกข้อความนี้เพื่อคัดลอก! ✨</h1>
 
+        <div class="cards-grid">
+            <!-- 3D Card 1 -->
+            <div class="hobby-card">
+                <div class="hobby-icon-wrapper">🎨</div>
+                <h3 class="card-number">01. UI Design</h3>
+                <p>การ์ดนี้มีเอฟเฟกต์ 3D Tilt และแสงออร่าโทนชมพูเมื่อวางเมาส์เหนือการ์ด</p>
+                <img src="https://picsum.photos/400/250?random=1" alt="Demo Image">
             </div>
-        </section>
 
-        <!-- =====================================================
-             QUICK HIGHLIGHTS
-        ===================================================== -->
-        <section class="quick-highlights reveal">
-            <div class="container">
-                <div class="highlight-grid">
-                    
-                    <div class="highlight-card">
-                        <div class="card-icon">
-                            <i class="fa-solid fa-user-gradient fa-id-card"></i>
-                        </div>
-                        <h3>ประวัติส่วนตัว</h3>
-                        <p>ข้อมูลเบื้องต้น ความสนใจ ความฝัน และเป้าหมายในอนาคตของฉัน</p>
-                    </div>
-
-                    <div class="highlight-card">
-                        <div class="card-icon">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <h3>การศึกษา</h3>
-                        <p>ประวัติการเรียนรู้ ผลงานทางวิชาการ และความภาคภูมิใจต่างๆ</p>
-                    </div>
-
-                    <div class="highlight-card">
-                        <div class="card-icon">
-                            <i class="fa-solid fa-icons"></i>
-                        </div>
-                        <h3>งานอดิเรก</h3>
-                        <p>กิจกรรมยามว่าง สิ่งที่ชื่นชอบ และความเชี่ยวชาญพิเศษ</p>
-                    </div>
-
-                </div>
+            <!-- 3D Card 2 -->
+            <div class="hobby-card">
+                <div class="hobby-icon-wrapper">💻</div>
+                <h3 class="card-number">02. Frontend Interactive</h3>
+                <p>ทดสอบปุ่ม Magnetic ที่จะขยับตามการเคลื่อนที่ของเมาส์อย่างนุ่มนวล</p>
+                <button class="magnetic-btn magnetic">Magnetic Button</button>
             </div>
-        </section>
-
+        </div>
     </main>
 
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-info">
-                <h3>ข้าวหอม Portfolio</h3>
-                <p>เด็กหญิงบุณยานุช ปาปัน</p>
-                <p class="copyright">© 2026 Boonyanuch Papan. All rights reserved.</p>
-            </div>
-            <nav class="footer-nav">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </nav>
-        </div>
-    </footer>
+    <!-- Floating Controls -->
+    <div class="floating-controls">
+        <button class="float-btn" id="colorToggleBtn" title="เปลี่ยนธีมสี">🎨</button>
+    </div>
 
-    <!-- =====================================================
-         FLOATING BUTTONS & TOAST
-    ===================================================== -->
-    <button class="theme-button" id="themeToggle" aria-label="Toggle Theme">
-        <i class="fa-solid fa-moon"></i>
-    </button>
+    <!-- Floating Color Panel -->
+    <div class="color-panel" id="colorPanel">
+        <div class="color-dot" style="background: #ff4081;" data-color="#ff4081"></div>
+        <div class="color-dot" style="background: #9c27b0;" data-color="#9c27b0"></div>
+        <div class="color-dot" style="background: #00c6ff;" data-color="#00c6ff"></div>
+    </div>
 
-    <button class="back-top" id="backTop" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <div class="toast" id="toast">สวัสดีค่ะ! ยินดีต้อนรับเข้าสู่เว็บไซต์ 💗</div>
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
-    <script>
-        // 1. TYPING EFFECT
-        const words = ["Web Development", "Creative Design", "New Skills", "Future Goals"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingText = document.getElementById("typingText");
-
-        function type() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                typingText.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                isDeleting = true;
-                setTimeout(type, 1800);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 40 : 90);
-            }
-        }
-        document.addEventListener("DOMContentLoaded", () => type());
-
-        // 2. SCROLL PROGRESS & BACK TO TOP
-        const scrollProgress = document.getElementById("scrollProgress");
-        const backTop = document.getElementById("backTop");
-
-        window.addEventListener("scroll", () => {
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            scrollProgress.style.width = `${progress}%`;
-
-            if (window.scrollY > 300) {
-                backTop.classList.add("show");
-            } else {
-                backTop.classList.remove("show");
-            }
-        });
-
-        backTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        // 3. DARK MODE TOGGLE
-        const themeToggle = document.getElementById("themeToggle");
-        const themeIcon = themeToggle.querySelector("i");
-
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark");
-            if (document.body.classList.contains("dark")) {
-                themeIcon.className = "fa-solid fa-sun";
-            } else {
-                themeIcon.className = "fa-solid fa-moon";
-            }
-        });
-
-        // 4. PARTICLES GENERATOR
-        const particlesContainer = document.getElementById("particles");
-        const particleCount = 20;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement("div");
-            particle.className = "particle";
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.animationDuration = `${6 + Math.random() * 8}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            particle.style.width = `${3 + Math.random() * 4}px`;
-            particle.style.height = particle.style.width;
-            particlesContainer.appendChild(particle);
-        }
-
-        // 5. CLICK HEART & RIPPLE EFFECT
-        document.addEventListener("click", (e) => {
-            if (e.target.closest("button") || e.target.closest("a")) return;
-
-            // Heart
-            const heart = document.createElement("i");
-            heart.className = "fa-solid fa-heart click-heart";
-            heart.style.left = `${e.clientX}px`;
-            heart.style.top = `${e.clientY}px`;
-            heart.style.setProperty("--x", `${(Math.random() - 0.5) * 80}px`);
-            document.body.appendChild(heart);
-
-            // Ripple
-            const ripple = document.createElement("div");
-            ripple.className = "ripple";
-            ripple.style.left = `${e.clientX}px`;
-            ripple.style.top = `${e.clientY}px`;
-            document.body.appendChild(ripple);
-
-            setTimeout(() => heart.remove(), 1000);
-            setTimeout(() => ripple.remove(), 700);
-        });
-
-        // 6. SCROLL REVEAL ANIMATION
-        const reveals = document.querySelectorAll(".reveal");
-
-        function checkReveal() {
-            const triggerBottom = window.innerHeight * 0.85;
-            reveals.forEach((el) => {
-                const top = el.getBoundingClientRect().top;
-                if (top < triggerBottom) {
-                    el.classList.add("show");
-                }
-            });
-        }
-        window.addEventListener("scroll", checkReveal);
-        checkReveal();
-
-        // 7. TOAST SHOW ON LOAD
-        window.addEventListener("load", () => {
-            const toast = document.getElementById("toast");
-            setTimeout(() => toast.classList.add("show"), 1000);
-            setTimeout(() => toast.classList.remove("show"), 4000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
