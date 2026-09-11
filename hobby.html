@@ -3,7 +3,6 @@
 ========================================================= */
 
 :root {
-    /* โทนสีชมพูอ่อนและสีสำหรับธีม */
     --bg-pink-light: #fff0f5;
     --accent: #ff4081;
     --accent2: #e91e63;
@@ -13,16 +12,26 @@
     --purple: #9c27b0;
     --glass-border: rgba(255, 182, 193, 0.4);
     --glass-bg: rgba(255, 255, 255, 0.75);
+    --text-color: #4a3e43;
 }
 
-/* ตั้งค่าพื้นหลังสีชมพูอ่อนแบบนุ่มนวล */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: var(--bg-pink-light);
-    color: #4a3e43;
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Animated background - ปรับเป็นโทนสีชมพูหมุนวนหวานๆ */
+/* ---------------------------------------------------------
+   ANIMATED BACKGROUND (พื้นหลังสีชมพูหมุนวนนุ่มนวล)
+--------------------------------------------------------- */
 body::before {
     content: "";
     position: fixed;
@@ -32,11 +41,11 @@ body::before {
 
     background: conic-gradient(
         from 0deg,
-        rgba(255, 182, 193, 0.25),
+        rgba(255, 182, 193, 0.3),
         rgba(255, 105, 180, 0.2),
         rgba(233, 30, 99, 0.15),
-        rgba(255, 218, 224, 0.3),
-        rgba(255, 182, 193, 0.25)
+        rgba(255, 218, 224, 0.35),
+        rgba(255, 182, 193, 0.3)
     );
 
     filter: blur(80px);
@@ -49,41 +58,47 @@ body::before {
     }
 }
 
-
-/* =========================================================
-   GLASS NAVBAR (สไตล์กระจกใสบนโทนชมพู)
-========================================================= */
-
+/* ---------------------------------------------------------
+   GLASS NAVBAR
+--------------------------------------------------------- */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 5000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
     background: rgba(255, 240, 245, 0.75);
     border-bottom: 1px solid rgba(255, 105, 180, 0.15);
-
     transition: all .4s ease;
-}
-
-body.dark-mode .navbar {
-    background: rgba(30, 15, 25, 0.85);
-    border-color: rgba(255, 105, 180, 0.15);
 }
 
 .navbar.scrolled {
     box-shadow: 0 12px 35px rgba(233, 30, 99, 0.12);
 }
 
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--accent2);
+}
 
-/* =========================================================
-   NAV LINK ANIMATION
-========================================================= */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
 
 .nav-link {
     position: relative;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
     transition: transform .3s ease, color .3s ease;
 }
 
@@ -92,17 +107,10 @@ body.dark-mode .navbar {
     position: absolute;
     left: 50%;
     bottom: -8px;
-
     width: 0;
     height: 3px;
     border-radius: 20px;
-
-    background: linear-gradient(
-        90deg,
-        var(--accent2),
-        var(--pink-glow)
-    );
-
+    background: linear-gradient(90deg, var(--accent2), var(--pink-glow));
     transform: translateX(-50%);
     transition: width .35s ease;
 }
@@ -117,47 +125,42 @@ body.dark-mode .navbar {
     width: 75%;
 }
 
-
-/* =========================================================
-   MAGNETIC EFFECT
-========================================================= */
-
-.magnetic {
-    transition: transform .2s cubic-bezier(.2,.8,.2,1);
+/* ---------------------------------------------------------
+   VISITOR TIMER & CONTROLS
+--------------------------------------------------------- */
+.visit-time {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6000;
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    color: white;
+    background: rgba(233, 30, 99, 0.65);
+    backdrop-filter: blur(10px);
+    opacity: 0.9;
 }
-
-
-/* =========================================================
-   FLOATING CONTROLS & BUTTONS
-========================================================= */
 
 .floating-controls {
     position: fixed;
     left: 22px;
     bottom: 22px;
-
     display: flex;
     flex-direction: column;
-    gap: 10px;
-
+    gap: 12px;
     z-index: 9999;
 }
 
 .float-btn {
     width: 48px;
     height: 48px;
-
     border: none;
     border-radius: 50%;
     color: white;
     cursor: pointer;
-
-    background: linear-gradient(
-        135deg,
-        var(--accent),
-        var(--pink-glow)
-    );
-
+    background: linear-gradient(135deg, var(--accent), var(--pink-glow));
     box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
     transition: .3s ease;
 }
@@ -167,31 +170,21 @@ body.dark-mode .navbar {
     box-shadow: 0 15px 30px rgba(233, 30, 99, 0.45);
 }
 
-
-/* =========================================================
-   COLOR PICKER PANEL
-========================================================= */
-
+/* Color Panel */
 .color-panel {
     position: fixed;
-    right: 85px;
-    bottom: 85px;
-
+    left: 85px;
+    bottom: 22px;
     z-index: 9999;
     padding: 12px;
-
     display: flex;
     gap: 8px;
-
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.88);
-
     backdrop-filter: blur(15px);
     box-shadow: 0 15px 40px rgba(233, 30, 99, 0.18);
-
     opacity: 0;
     visibility: hidden;
-
     transform: scale(.8) translateY(20px);
     transition: .3s ease;
 }
@@ -205,11 +198,9 @@ body.dark-mode .navbar {
 .color-dot {
     width: 27px;
     height: 27px;
-
     border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
-
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     transition: .25s ease;
 }
@@ -218,36 +209,48 @@ body.dark-mode .navbar {
     transform: scale(1.25);
 }
 
-
-/* =========================================================
-   VISITOR TIMER
-========================================================= */
-
-.visit-time {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-
-    transform: translateX(-50%);
-    z-index: 6000;
-
-    padding: 7px 15px;
-    border-radius: 50px;
-
-    font-size: 12px;
-    color: white;
-
-    background: rgba(233, 30, 99, 0.6);
-    backdrop-filter: blur(10px);
-
-    opacity: .9;
+/* ---------------------------------------------------------
+   MAIN CONTENT & CARDS (3D TILT EFFECT)
+--------------------------------------------------------- */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    perspective: 1000px;
+}
 
-/* =========================================================
-   COPY FEEDBACK
-========================================================= */
+.hobby-card {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(12px);
+    transform-style: preserve-3d;
+    transition: border-color .3s ease, box-shadow .3s ease, transform .1s ease;
+}
 
+.hobby-card > * {
+    transform: translateZ(20px);
+}
+
+.hobby-icon-wrapper {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    transform: translateZ(35px);
+}
+
+.hobby-card:hover {
+    border-color: rgba(255, 64, 129, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+}
+
+/* Copyable Text Feedback */
 .copyable {
     cursor: pointer;
     transition: color .25s ease, transform .25s ease;
@@ -258,234 +261,11 @@ body.dark-mode .navbar {
     transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   CARD GLOW & 3D TILT
-========================================================= */
-
-.hobby-card {
-    --rotate-x: 0deg;
-    --rotate-y: 0deg;
-
-    transform-style: preserve-3d;
-    transition: border-color .3s ease, box-shadow .3s ease;
-}
-
-.hobby-card > * {
-    transform: translateZ(20px);
-}
-
-.hobby-icon-wrapper {
-    transform: translateZ(35px);
-}
-
-.hobby-card:hover {
-    border-color: rgba(255, 64, 129, 0.4);
-    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
-}
-
-.hobby-card:hover .card-number {
-    text-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
-}
-
-
-/* =========================================================
-   MODAL ENHANCEMENT
-========================================================= */
-
-.modal-box::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    z-index: -1;
-
-    border-radius: 30px;
-    background: linear-gradient(
-        135deg,
-        var(--pink-soft),
-        var(--accent),
-        var(--purple)
-    );
-
-    opacity: .35;
-    filter: blur(12px);
-}
-
-.modal-box {
-    overflow: hidden;
-}
-
-.modal-box h2 {
-    background: linear-gradient(
-        90deg,
-        var(--accent2),
-        var(--pink-glow),
-        var(--purple)
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-
-/* =========================================================
-   LOADING CURSOR
-========================================================= */
-
-body.loading {
-    cursor: wait;
-}
-
-
-/* =========================================================
-   FULLSCREEN MODE
-========================================================= */
-
-.fullscreen-active .page-main {
-    min-height: 100vh;
-}
-
-
-/* =========================================================
-   SCROLL TOP BOUNCE
-========================================================= */
-
-.back-to-top.show {
-    animation: topBounce 2s infinite;
-}
-
-@keyframes topBounce {
-    0%, 100% {
-        box-shadow: 0 10px 30px rgba(255, 64, 129, .35);
-    }
-    50% {
-        box-shadow: 0 10px 45px rgba(255, 64, 129, .75);
-    }
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu-btn {
-    display: none;
-    width: 45px;
-    height: 45px;
-
-    border: none;
-    border-radius: 12px;
-    color: white;
-
-    background: linear-gradient(
-        135deg,
-        var(--accent),
-        var(--pink-glow)
-    );
-
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .nav-container {
-        position: relative;
-    }
-
-    .nav-menu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 15px;
-        right: 15px;
-
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-
-        border-radius: 20px;
-        background: rgba(255, 240, 245, 0.95);
-
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
-
-        opacity: 0;
-        visibility: hidden;
-
-        transform: translateY(-15px);
-        transition: .3s ease;
-    }
-
-    .nav-menu.mobile-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    body.dark-mode .nav-menu {
-        background: rgba(30, 15, 25, 0.97);
-    }
-
-    .visit-time {
-        display: none;
-    }
-
-    .floating-controls {
-        left: 12px;
-        bottom: 12px;
-    }
-
-    .color-panel {
-        right: 70px;
-        bottom: 75px;
-    }
-}
-
-
-/* =========================================================
-   PARTICLE INTERACTION & SELECTION
-========================================================= */
-
-.particle.interactive {
-    transition: transform .2s ease;
-}
-
-::selection {
-    color: white;
-    background: linear-gradient(
-        90deg,
-        var(--accent),
-        var(--pink-glow)
-    );
-}
-
-/* Custom Scrollbar โทนชมพู (ลูกเล่นเพิ่ม) */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-pink-light);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--pink-soft);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-}
-
-
-/* =========================================================
-   SMOOTH IMAGE & HOVER GLOW
-========================================================= */
-
+/* Interactive Image */
 img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
     transition: transform .5s ease, filter .5s ease, box-shadow .5s ease;
 }
 
@@ -495,41 +275,74 @@ img:hover {
     box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
 }
 
-
-/* =========================================================
-   NEW EXTRA FEATURE: PULSE GLOW BUTTONS
-========================================================= */
-
-.btn-glow {
-    position: relative;
-    overflow: hidden;
-    transition: all .3s ease;
+/* Magnetic Button */
+.magnetic-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--accent), var(--pink-glow));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.3);
+    transition: transform .2s cubic-bezier(.2,.8,.2,1);
 }
 
-.btn-glow::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-    transform: scale(0);
-    transition: transform .5s ease;
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(135deg, var(--accent), var(--pink-glow));
+    cursor: pointer;
 }
 
-.btn-glow:hover::before {
-    transform: scale(1);
+/* Scrollbar ชมพู */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-pink-light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--pink-soft);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
 
-/* =========================================================
-   REDUCED MOTION OVERRIDE
-========================================================= */
+    .nav-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 15px;
+        right: 15px;
+        padding: 20px;
+        flex-direction: column;
+        border-radius: 20px;
+        background: rgba(255, 240, 245, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-15px);
+        transition: .3s ease;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-    body::before,
-    .back-to-top.show {
-        animation: none !important;
+    .nav-menu.mobile-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 }
