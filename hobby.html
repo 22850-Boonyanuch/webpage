@@ -1,237 +1,234 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="งานอดิเรกและความสนใจของนักเรียน">
-    <title>My Portfolio | งานอดิเรก</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+/* ==============================
+   HOBBY PAGE - PINK STYLE
+   ============================== */
 
-<body>
+body {
+    background-color: #fff0f5;
+    color: #4a3540;
+}
 
-    <header class="site-header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <span class="logo-mark">M</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
+/* ส่วนหัว */
+.site-header {
+    background: #ffd6e5;
+    border-bottom: 1px solid #f3b6cc;
+}
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html" class="active">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-        </nav>
-    </header>
+/* โลโก้ */
+.logo-mark {
+    background: #ff8fb3;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 143, 179, 0.3);
+}
 
-    <main>
+.logo {
+    color: #713f55;
+}
 
-        <section class="page-hero hobby-hero">
-            <div class="section">
-                <span class="section-number">04 / HOBBY</span>
-                <h1>สิ่งที่ฉันชอบ</h1>
-                <p>
-                    เพราะชีวิตไม่ได้มีแค่ห้องเรียน
-                    งานอดิเรกคือพื้นที่ที่ทำให้ฉันได้สนุกและเป็นตัวเอง
-                </p>
-            </div>
-        </section>
+.logo span span {
+    color: #ff6f9f;
+}
 
-        <section class="hobby-intro section">
+/* เมนู */
+.nav-links a {
+    color: #70485a;
+    transition: 0.3s;
+}
 
-            <div class="hobby-intro-text">
-                <span class="section-number">MY FREE TIME</span>
-                <h2>เวลาว่างของฉัน</h2>
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ff5f94;
+}
 
-                <p>
-                    ในเวลาว่าง ฉันชอบประดิษฐ์ของเล่นหรือทำกิจกรรม
-                   อื่นๆเพื่อให้ผ่อนคลาย
-                </p>
-            </div>
+/* Hero */
+.hobby-hero {
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.8) 0 6px, transparent 7px),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,0.7) 0 8px, transparent 9px),
+        radial-gradient(circle at 80% 80%, rgba(255,182,205,0.5) 0 30px, transparent 31px),
+        linear-gradient(135deg, #ffd6e5, #ffeaf2, #ffd1e3);
+    position: relative;
+    overflow: hidden;
+}
 
-            <div class="hobby-word">
-                <span>PLAY</span>
-                <span>LEARN</span>
-                <span>CREATE</span>
-            </div>
+/* ของตกแต่งพื้นหลัง */
+.hobby-hero::before {
+    content: "♡  ✦  ♡  ✿  ✦";
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 30px;
+    color: rgba(255, 105, 150, 0.35);
+    letter-spacing: 15px;
+}
 
-        </section>
+.hobby-hero::after {
+    content: "✦";
+    position: absolute;
+    bottom: 30px;
+    left: 8%;
+    font-size: 60px;
+    color: rgba(255, 120, 160, 0.25);
+}
 
-        <section class="hobby-grid-section section-small">
+/* ตัวเลขหัวข้อ */
+.section-number {
+    color: #ff6f9f;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-            <div class="hobby-grid">
+/* หัวข้อ */
+h1,
+h2,
+h3 {
+    color: #633b4d;
+}
 
-                <article class="hobby-card hobby-featured">
+/* ข้อความ */
+p {
+    color: #765565;
+}
 
-                    <div class="hobby-number">01</div>
-                    <div class="hobby-icon">🎮</div>
+/* คำ PLAY LEARN CREATE */
+.hobby-word span {
+    color: #ff7fa8;
+    text-shadow: 2px 2px 0 #ffd0df;
+}
 
-                    <div class="hobby-card-content">
-                        <span>ENTERTAINMENT</span>
-                        <h3>เกม</h3>
-                        <p>
-                            minecraft
-                            เกมช่วยให้ฉันได้ฝึกการคิดวิเคราะห์
-                            การวางแผน และการแก้ปัญหา
-                        </p>
-                    </div>
+/* การ์ดงานอดิเรก */
+.hobby-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #f5c3d5;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(180, 80, 120, 0.12);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
 
-                    <div class="hobby-arrow">↗</div>
+/* ลายตกแต่งบนการ์ด */
+.hobby-card::before {
+    content: "♡";
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 45px;
+    color: #ffd0df;
+}
 
-                </article>
+.hobby-card::after {
+    content: "✦";
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 25px;
+    color: #ffb2c9;
+}
 
-                <article class="hobby-card">
+.hobby-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(180, 80, 120, 0.2);
+    border-color: #ff9fbd;
+}
 
-                    <div class="hobby-number">02</div>
-                    <div class="hobby-icon">⚽</div>
+/* เลขบนการ์ด */
+.hobby-number {
+    color: #ff8fb3;
+    font-weight: bold;
+}
 
-                    <div class="hobby-card-content">
-                        <span>SPORT</span>
-                        <h3>กีฬา</h3>
-                        <p>
-                            ตะกร้อ
-                            ช่วยให้ได้ออกกำลังกาย
-                            และฝึกการทำงานร่วมกับผู้อื่น
-                        </p>
-                    </div>
+/* ไอคอน */
+.hobby-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffe1eb;
+    border-radius: 20px;
+    font-size: 35px;
+    box-shadow: 0 6px 15px rgba(255, 130, 170, 0.15);
+}
 
-                    <div class="hobby-arrow">↗</div>
+/* หมวดหมู่ */
+.hobby-card-content > span {
+    color: #ff7da6;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-                </article>
+/* การ์ดใบแรก */
+.hobby-featured {
+    background: linear-gradient(
+        135deg,
+        #fff,
+        #ffe6ef
+    );
+}
 
-                <article class="hobby-card">
+/* การ์ดกว้าง */
+.hobby-wide {
+    background: linear-gradient(
+        135deg,
+        #fff,
+        #ffeaf2
+    );
+}
 
-                    <div class="hobby-number">03</div>
-                    <div class="hobby-icon">🎵</div>
+/* ลูกศร */
+.hobby-arrow {
+    color: #ff709d;
+    font-size: 28px;
+    transition: 0.3s;
+}
 
-                    <div class="hobby-card-content">
-                        <span>MUSIC</span>
-                        <h3>เพลง</h3>
-                        <p>
-                            ฉันชอบฟังเพลงในเวลาว่าง
-                            เพราะช่วยให้รู้สึกผ่อนคลาย
-                            และสร้างแรงบันดาลใจ
-                        </p>
-                    </div>
+.hobby-card:hover .hobby-arrow {
+    transform: translate(5px, -5px);
+}
 
-                    <div class="hobby-arrow">↗</div>
+/* เพิ่มวงกลมตกแต่งด้านหลัง */
+.hobby-grid-section {
+    position: relative;
+}
 
-                </article>
+.hobby-grid-section::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ffd9e6;
+    border-radius: 50%;
+    top: 30px;
+    left: -80px;
+    z-index: -1;
+}
 
-                <article class="hobby-card">
+.hobby-grid-section::after {
+    content: "✿";
+    position: absolute;
+    font-size: 90px;
+    color: #ffc1d5;
+    right: -20px;
+    bottom: 30px;
+    z-index: -1;
+}
 
-                    <div class="hobby-number">04</div>
-                    <div class="hobby-icon">🎬</div>
+/* รองรับมือถือ */
+@media (max-width: 768px) {
 
-                    <div class="hobby-card-content">
-                        <span>MEDIA</span>
-                        <h3>ภาพยนตร์</h3>
-                        <p>
-                            Fantasy
-                            เป็นอีกหนึ่งกิจกรรมที่ช่วยให้ฉัน
-                            ได้พักผ่อนในเวลาว่าง
-                        </p>
-                    </div>
+    .hobby-hero::before {
+        font-size: 20px;
+        right: 15px;
+    }
 
-                    <div class="hobby-arrow">↗</div>
+    .hobby-card {
+        border-radius: 18px;
+    }
 
-                </article>
-
-                <article class="hobby-card hobby-wide">
-
-                    <div class="hobby-number">05</div>
-                    <div class="hobby-icon">💻</div>
-
-                    <div class="hobby-card-content">
-                        <span>TECHNOLOGY</span>
-                        <h3>เทคโนโลยี</h3>
-                        <p>
-                            ฉันสนใจเทคโนโลยีและการสร้างเว็บไซต์
-                            เพราะเป็นสิ่งที่เปิดโอกาสให้เรา
-                            ได้สร้างผลงานของตัวเอง
-                        </p>
-                    </div>
-
-                    <div class="hobby-arrow">↗</div>
-
-                </article>
-
-                <article class="hobby-card">
-
-                    <div class="hobby-number">06</div>
-                    <div class="hobby-icon">📷</div>
-
-                    <div class="hobby-card-content">
-                        <span>CREATIVE</span>
-                        <h3>ความสนใจ</h3>
-                        <p>
-                            การพัฒนาตนเองและธุรกิจ
-                            เป็นสิ่งที่ฉันอยากเรียนรู้
-                            และพัฒนาต่อไป
-                        </p>
-                    </div>
-
-                    <div class="hobby-arrow">↗</div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-        <section class="interest-section section">
-
-            <div class="interest-box">
-
-                <div>
-                    <span class="section-number light-number">MY INTEREST</span>
-                    <h2>สิ่งที่ฉันอยากเรียนรู้เพิ่มเติม</h2>
-                </div>
-
-                <div class="interest-tags">
-                    <span>💻 Web Design</span>
-                    <span>🎨 Creative Design</span>
-                    <span>📱 Technology</span>
-                    <span>🚀 New Skills</span>
-                    <span>📚 Learning</span>
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="footer-main">
-            <div>
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">M</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-                <p>
-                    เว็บไซต์แนะนำตัวสำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-links">
-                <span>QUICK LINKS</span>
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <span>© 2026 บุณยานุช ปาปัน — ม.3/2</span>
-            <span>Made with HTML & CSS 💙</span>
-        </div>
-    </footer>
-
-</body>
-</html>
+    .hobby-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+}
