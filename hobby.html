@@ -1,348 +1,237 @@
-/* =========================================================
-   EXTRA INTERACTIVE EFFECTS & SOFT PINK THEME
-========================================================= */
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="งานอดิเรกและความสนใจของนักเรียน">
+    <title>My Portfolio | งานอดิเรก</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-:root {
-    --bg-pink-light: #fff0f5;
-    --accent: #ff4081;
-    --accent2: #e91e63;
-    --pink-soft: #ffb6c1;
-    --pink-glow: #ff69b4;
-    --blue: #00c6ff;
-    --purple: #9c27b0;
-    --glass-border: rgba(255, 182, 193, 0.4);
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --text-color: #4a3e43;
-}
+<body>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">M</span>
+                <span>My<span>Portfolio</span></span>
+            </a>
 
-body {
-    background-color: var(--bg-pink-light);
-    color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
+            <div class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="profile.html">ประวัติส่วนตัว</a>
+                <a href="education.html">การศึกษา</a>
+                <a href="hobby.html" class="active">งานอดิเรก</a>
+                <a href="contact.html">ติดต่อ</a>
+            </div>
+        </nav>
+    </header>
 
-/* ---------------------------------------------------------
-   ANIMATED BACKGROUND (พื้นหลังสีชมพูหมุนวนนุ่มนวล)
---------------------------------------------------------- */
-body::before {
-    content: "";
-    position: fixed;
-    inset: -20%;
-    z-index: -3;
-    pointer-events: none;
+    <main>
 
-    background: conic-gradient(
-        from 0deg,
-        rgba(255, 182, 193, 0.3),
-        rgba(255, 105, 180, 0.2),
-        rgba(233, 30, 99, 0.15),
-        rgba(255, 218, 224, 0.35),
-        rgba(255, 182, 193, 0.3)
-    );
+        <section class="page-hero hobby-hero">
+            <div class="section">
+                <span class="section-number">04 / HOBBY</span>
+                <h1>สิ่งที่ฉันชอบ</h1>
+                <p>
+                    เพราะชีวิตไม่ได้มีแค่ห้องเรียน
+                    งานอดิเรกคือพื้นที่ที่ทำให้ฉันได้สนุกและเป็นตัวเอง
+                </p>
+            </div>
+        </section>
 
-    filter: blur(80px);
-    animation: backgroundRotate 20s linear infinite;
-}
+        <section class="hobby-intro section">
 
-@keyframes backgroundRotate {
-    to {
-        transform: rotate(360deg);
-    }
-}
+            <div class="hobby-intro-text">
+                <span class="section-number">MY FREE TIME</span>
+                <h2>เวลาว่างของฉัน</h2>
 
-/* ---------------------------------------------------------
-   GLASS NAVBAR
---------------------------------------------------------- */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 5000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
+                <p>
+                    ในเวลาว่าง ฉันชอบประดิษฐ์ของเล่นหรือทำกิจกรรม
+                   อื่นๆเพื่อให้ผ่อนคลาย
+                </p>
+            </div>
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+            <div class="hobby-word">
+                <span>PLAY</span>
+                <span>LEARN</span>
+                <span>CREATE</span>
+            </div>
 
-    background: rgba(255, 240, 245, 0.75);
-    border-bottom: 1px solid rgba(255, 105, 180, 0.15);
-    transition: all .4s ease;
-}
+        </section>
 
-.navbar.scrolled {
-    box-shadow: 0 12px 35px rgba(233, 30, 99, 0.12);
-}
+        <section class="hobby-grid-section section-small">
 
-.logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--accent2);
-}
+            <div class="hobby-grid">
 
-.nav-menu {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-}
+                <article class="hobby-card hobby-featured">
 
-.nav-link {
-    position: relative;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    transition: transform .3s ease, color .3s ease;
-}
+                    <div class="hobby-number">01</div>
+                    <div class="hobby-icon">🎮</div>
 
-.nav-link::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -8px;
-    width: 0;
-    height: 3px;
-    border-radius: 20px;
-    background: linear-gradient(90deg, var(--accent2), var(--pink-glow));
-    transform: translateX(-50%);
-    transition: width .35s ease;
-}
+                    <div class="hobby-card-content">
+                        <span>ENTERTAINMENT</span>
+                        <h3>เกม</h3>
+                        <p>
+                            minecraft
+                            เกมช่วยให้ฉันได้ฝึกการคิดวิเคราะห์
+                            การวางแผน และการแก้ปัญหา
+                        </p>
+                    </div>
 
-.nav-link:hover {
-    transform: translateY(-3px);
-    color: var(--accent2);
-}
+                    <div class="hobby-arrow">↗</div>
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 75%;
-}
+                </article>
 
-/* ---------------------------------------------------------
-   VISITOR TIMER & CONTROLS
---------------------------------------------------------- */
-.visit-time {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 6000;
-    padding: 7px 18px;
-    border-radius: 50px;
-    font-size: 12px;
-    color: white;
-    background: rgba(233, 30, 99, 0.65);
-    backdrop-filter: blur(10px);
-    opacity: 0.9;
-}
+                <article class="hobby-card">
 
-.floating-controls {
-    position: fixed;
-    left: 22px;
-    bottom: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
-}
+                    <div class="hobby-number">02</div>
+                    <div class="hobby-icon">⚽</div>
 
-.float-btn {
-    width: 48px;
-    height: 48px;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--accent), var(--pink-glow));
-    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
-    transition: .3s ease;
-}
+                    <div class="hobby-card-content">
+                        <span>SPORT</span>
+                        <h3>กีฬา</h3>
+                        <p>
+                            ตะกร้อ
+                            ช่วยให้ได้ออกกำลังกาย
+                            และฝึกการทำงานร่วมกับผู้อื่น
+                        </p>
+                    </div>
 
-.float-btn:hover {
-    transform: translateY(-5px) rotate(8deg) scale(1.08);
-    box-shadow: 0 15px 30px rgba(233, 30, 99, 0.45);
-}
+                    <div class="hobby-arrow">↗</div>
 
-/* Color Panel */
-.color-panel {
-    position: fixed;
-    left: 85px;
-    bottom: 22px;
-    z-index: 9999;
-    padding: 12px;
-    display: flex;
-    gap: 8px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.18);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(.8) translateY(20px);
-    transition: .3s ease;
-}
+                </article>
 
-.color-panel.show {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1) translateY(0);
-}
+                <article class="hobby-card">
 
-.color-dot {
-    width: 27px;
-    height: 27px;
-    border: 2px solid white;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    transition: .25s ease;
-}
+                    <div class="hobby-number">03</div>
+                    <div class="hobby-icon">🎵</div>
 
-.color-dot:hover {
-    transform: scale(1.25);
-}
+                    <div class="hobby-card-content">
+                        <span>MUSIC</span>
+                        <h3>เพลง</h3>
+                        <p>
+                            ฉันชอบฟังเพลงในเวลาว่าง
+                            เพราะช่วยให้รู้สึกผ่อนคลาย
+                            และสร้างแรงบันดาลใจ
+                        </p>
+                    </div>
 
-/* ---------------------------------------------------------
-   MAIN CONTENT & CARDS (3D TILT EFFECT)
---------------------------------------------------------- */
-.container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+                    <div class="hobby-arrow">↗</div>
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    perspective: 1000px;
-}
+                </article>
 
-.hobby-card {
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 25px;
-    backdrop-filter: blur(12px);
-    transform-style: preserve-3d;
-    transition: border-color .3s ease, box-shadow .3s ease, transform .1s ease;
-}
+                <article class="hobby-card">
 
-.hobby-card > * {
-    transform: translateZ(20px);
-}
+                    <div class="hobby-number">04</div>
+                    <div class="hobby-icon">🎬</div>
 
-.hobby-icon-wrapper {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    transform: translateZ(35px);
-}
+                    <div class="hobby-card-content">
+                        <span>MEDIA</span>
+                        <h3>ภาพยนตร์</h3>
+                        <p>
+                            Fantasy
+                            เป็นอีกหนึ่งกิจกรรมที่ช่วยให้ฉัน
+                            ได้พักผ่อนในเวลาว่าง
+                        </p>
+                    </div>
 
-.hobby-card:hover {
-    border-color: rgba(255, 64, 129, 0.4);
-    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
-}
+                    <div class="hobby-arrow">↗</div>
 
-/* Copyable Text Feedback */
-.copyable {
-    cursor: pointer;
-    transition: color .25s ease, transform .25s ease;
-}
+                </article>
 
-.copyable:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-}
+                <article class="hobby-card hobby-wide">
 
-/* Interactive Image */
-img {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 15px;
-    transition: transform .5s ease, filter .5s ease, box-shadow .5s ease;
-}
+                    <div class="hobby-number">05</div>
+                    <div class="hobby-icon">💻</div>
 
-img:hover {
-    transform: scale(1.04);
-    filter: saturate(1.2) contrast(1.05);
-    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
-}
+                    <div class="hobby-card-content">
+                        <span>TECHNOLOGY</span>
+                        <h3>เทคโนโลยี</h3>
+                        <p>
+                            ฉันสนใจเทคโนโลยีและการสร้างเว็บไซต์
+                            เพราะเป็นสิ่งที่เปิดโอกาสให้เรา
+                            ได้สร้างผลงานของตัวเอง
+                        </p>
+                    </div>
 
-/* Magnetic Button */
-.magnetic-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(90deg, var(--accent), var(--pink-glow));
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.3);
-    transition: transform .2s cubic-bezier(.2,.8,.2,1);
-}
+                    <div class="hobby-arrow">↗</div>
 
-/* Mobile Menu Button */
-.mobile-menu-btn {
-    display: none;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background: linear-gradient(135deg, var(--accent), var(--pink-glow));
-    cursor: pointer;
-}
+                </article>
 
-/* Scrollbar ชมพู */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--bg-pink-light);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--pink-soft);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-}
+                <article class="hobby-card">
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
+                    <div class="hobby-number">06</div>
+                    <div class="hobby-icon">📷</div>
 
-    .nav-menu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 15px;
-        right: 15px;
-        padding: 20px;
-        flex-direction: column;
-        border-radius: 20px;
-        background: rgba(255, 240, 245, 0.95);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-15px);
-        transition: .3s ease;
-    }
+                    <div class="hobby-card-content">
+                        <span>CREATIVE</span>
+                        <h3>ความสนใจ</h3>
+                        <p>
+                            การพัฒนาตนเองและธุรกิจ
+                            เป็นสิ่งที่ฉันอยากเรียนรู้
+                            และพัฒนาต่อไป
+                        </p>
+                    </div>
 
-    .nav-menu.mobile-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-}
+                    <div class="hobby-arrow">↗</div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="interest-section section">
+
+            <div class="interest-box">
+
+                <div>
+                    <span class="section-number light-number">MY INTEREST</span>
+                    <h2>สิ่งที่ฉันอยากเรียนรู้เพิ่มเติม</h2>
+                </div>
+
+                <div class="interest-tags">
+                    <span>💻 Web Design</span>
+                    <span>🎨 Creative Design</span>
+                    <span>📱 Technology</span>
+                    <span>🚀 New Skills</span>
+                    <span>📚 Learning</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div>
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-mark">M</span>
+                    <span>My<span>Portfolio</span></span>
+                </a>
+                <p>
+                    เว็บไซต์แนะนำตัวสำหรับโครงงานวิชาคอมพิวเตอร์
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <span>QUICK LINKS</span>
+                <a href="index.html">หน้าแรก</a>
+                <a href="profile.html">ประวัติส่วนตัว</a>
+                <a href="education.html">การศึกษา</a>
+                <a href="hobby.html">งานอดิเรก</a>
+                <a href="contact.html">ติดต่อ</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 บุณยานุช ปาปัน — ม.3/2</span>
+            <span>Made with HTML & CSS 💙</span>
+        </div>
+    </footer>
+
+</body>
+</html>
